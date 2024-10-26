@@ -9,9 +9,8 @@ function IconController() {
     const [rotate, setRotate] = useState(0);
     const [color, setColor] = useState('#fff');
 
-    //now on updating all size, rotation and color value to apply it in the iconPreview section,
-    // we'll store in local storage with useEffect
-
+    //now while updating size, rotation and color value to apply it in the iconPreview section,
+    // we'll store that data in local storage with useEffect
     const storageValue = JSON.parse(localStorage.getItem('value'));
     useEffect(()=>{
        const updatedValue = {
