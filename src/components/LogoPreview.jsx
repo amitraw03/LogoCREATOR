@@ -59,10 +59,12 @@ function LogoPreview() {
       <div className='flex justify-center items-center h-screen'>
           <div className='h-[500px] w-[500px] bg-gray-200 outline-dotted outline-gray-300'
            style={{padding: storageValue?.bgPadding}} >
+
               <div className='h-full w-full '
                   style={getBackgroundStyle()}>
                   <IconComponent />
               </div>
+              
           </div>
       </div>
   );

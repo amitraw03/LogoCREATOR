@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Slider } from "@/components/ui/slider"
 import ColorPickerController from './ColorPickerController';
 import { UpdateStorageContext } from '@/context/UpdateStorageContext';
+import IconList from './IconList';
 
 
 function IconController() {
@@ -13,6 +14,7 @@ function IconController() {
     const [size, setSize] = useState(storageValue? storageValue?.iconSize : 280); // condn for persisting prev changes
     const [rotate, setRotate] = useState(storageValue ? storageValue?.iconRotate : 0);
     const [color, setColor] = useState(storageValue ? storageValue?.iconColor : '#fff');
+    const [icon, setIcon] = useState(storageValue ? storageValue?.icon : 'Star');
 
     // context state Variables
     const { updateStorage, setUpdateStorage } = useContext(UpdateStorageContext);
@@ -22,21 +24,17 @@ function IconController() {
             iconSize: size,
             iconRotate: rotate,
             iconColor: color,
-            icon: 'Star'  //name of icon
+            icon: icon  //name of icon
         }
         setUpdateStorage(updatedValue); // setting updated icon controller data to context
         localStorage.setItem('value', JSON.stringify(updatedValue));
 
-    }, [size, rotate, color]);
+    }, [size, rotate, color, icon]);
 
     return (
         <div>
             <div>
-                <label>Icon</label>
-                <div className='p-3 cursor-pointer bg-gray-200 hover:bg-gray-300 rounded-md
-             w-[50px] my-2 flex justify-center items-center'>
-                    <Star />
-                </div>
+                <IconList selectedIcon={(icon) => setIcon(icon)}/>
                 <div className='py-2'>
                     <label className='flex justify-between items-center p-2'>Size <span>{size} px</span></label>
                     <Slider defaultValue={[size]} max={512} step={1}
