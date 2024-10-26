@@ -3,11 +3,15 @@ import Header from './components/Header'
 import SideNav from './components/SideNav'
 import IconController from './components/IconController'
 import BackgroundController from './components/BackgroundController'
+import LogoPreview from './components/LogoPreview'
+import { UpdateStorageContext } from './context/UpdateStorageContext'
 
 const App = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [updateStorage, setUpdateStorage] = useState({});
 
   return (
+    <UpdateStorageContext.Provider value={{updateStorage,setUpdateStorage}}>
     <div className="flex flex-col h-screen">
       <Header />
       <div className="flex-1 flex overflow-hidden">
@@ -24,8 +28,8 @@ const App = () => {
           </div>
 
           {/* Icon Preview section */}
-          <div className="col-span-3 overflow-y-auto bg-red-600">
-            Icon Preview
+          <div className="col-span-3 overflow-y-auto ">
+            <LogoPreview/>
           </div>
 
           {/* Ads Banner section */}
@@ -35,6 +39,7 @@ const App = () => {
         </div>
       </div>
     </div>
+    </UpdateStorageContext.Provider>
   )
 }
 
