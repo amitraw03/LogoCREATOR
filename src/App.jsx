@@ -8,7 +8,7 @@ import { UpdateStorageContext } from './context/UpdateStorageContext'
 
 const App = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [updateStorage, setUpdateStorage] = useState({});
+  const [updateStorage, setUpdateStorage] = useState({});  // for setting context data
 
   return (
     <UpdateStorageContext.Provider value={{updateStorage,setUpdateStorage}}>
