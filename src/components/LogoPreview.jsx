@@ -28,7 +28,8 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
     //method to download logo
     const downloadLogoHandler = () => {
         const downloadLink = document.getElementById('downloadLogoDiv');
-        html2canvas(downloadLink, { backgroundColor: null }).then((canvas) => {
+        html2canvas(downloadLink, { backgroundColor: null, useCORS: true,  // Add this to handle cross-origin images
+            allowTaint: true  }).then((canvas) => {
             const img = canvas.toDataURL('image/png');
             const link = document.createElement('a');
             link.download = 'raw_logofy.png';
@@ -72,10 +73,10 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
                 }}
             >
                 {storageValue?.icon?.includes('.png') ?
-                    <img src={ '/png/' + storageValue?.icon} alt="Icon"
-                        style={{ width: storageValue?.iconSize, height: storageValue?.iconSize }} />
-                    : <IconFromName size={storageValue?.iconSize}
-                        color={storageValue?.iconColor} />
+                    (<img src={ '/png/' + storageValue?.icon} alt="Icon"
+                        style={{ width: storageValue?.iconSize, height: storageValue?.iconSize }}  crossOrigin="anonymous" />)
+                    : (<IconFromName size={storageValue?.iconSize}
+                        color={storageValue?.iconColor} />)
                 }
 
             </div>
