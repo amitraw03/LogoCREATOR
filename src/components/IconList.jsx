@@ -35,8 +35,8 @@ function IconList({ selectedIcon }) {
     }
 
     // handling API call
-    const getPngIcons = () => {
-        axios.get(BASE_URL + '/getIcons.php')
+    const getPngIcons = async() => {
+        await axios.get(BASE_URL + '/getIcons.php')
             .then((response) => {
                 const data = response.data;
                 // console.log(data);
@@ -51,7 +51,7 @@ function IconList({ selectedIcon }) {
                 <div onClick={() => { setOpenDialog(true) }}
                     className='p-3 cursor-pointer bg-gray-200 hover:bg-gray-300 rounded-md
              w-[50px] my-2 flex justify-center items-center'>
-                { icon?.includes('.png') ? <img src={BASE_URL + '/png/' + icon} alt={icon} />: <Icon name={icon} color='black' size={20} /> }
+                { icon?.includes('.png') ? <img src={BASE_URL + '/png/' + icon} alt={icon}   />: <Icon name={icon} color='black' size={20} /> }
 
                 </div>
             </div>
@@ -84,7 +84,7 @@ function IconList({ selectedIcon }) {
                                             <div key={index} onClick={() => { setOpenDialog(false); selectedIcon(icon); setIcon(icon) }}
                                                 className='p-3 cursor-pointer bg-gray-200 hover:bg-gray-300 rounded-sm
                                      w-[50px] my-2 flex justify-center items-center'>
-                                                <img src={BASE_URL + '/png/' + icon} alt={icon} />
+                                                <img src={BASE_URL + '/png/' + icon} alt={icon}     />
                                             </div>
                                         ))}
                                     </div>
