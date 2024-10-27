@@ -72,7 +72,7 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
                 }}
             >
                 {storageValue?.icon?.includes('.png') ?
-                    <img src={BASE_URL + '/png/' + storageValue?.icon} alt="Icon"
+                    <img src={ '/png/' + storageValue?.icon} alt="Icon"
                         style={{ width: storageValue?.iconSize, height: storageValue?.iconSize }} />
                     : <IconFromName size={storageValue?.iconSize}
                         color={storageValue?.iconColor} />
