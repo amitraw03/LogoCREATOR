@@ -8,8 +8,6 @@ const BASE_URL = 'https://logoexpress.tubeguruji.com';
 function LogoPreview({ downloadLogo }) { // download logo request from parent component
 
     const [storageValue, setStorageValue] = useState({});
-    // error handling
-    const [imageError, setImageError] = useState(false);
     // use the updated icon/bg controller data from context
     const { updateStorage, setUpdateStorage } = useContext(UpdateStorageContext);
 
@@ -30,19 +28,14 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
     //method to download logo
     const downloadLogoHandler = () => {
         const downloadLink = document.getElementById('downloadLogoDiv');
-        html2canvas(downloadLink, { 
-            backgroundColor: null,
-            useCORS: true,  // Add this to handle cross-origin images
-            allowTaint: true // Add this if needed
-        }).then((canvas) => {
+        html2canvas(downloadLink, { backgroundColor: null, useCORS: true,  // Add this to handle cross-origin images
+            allowTaint: true  }).then((canvas) => {
             const img = canvas.toDataURL('image/png');
             const link = document.createElement('a');
             link.download = 'raw_logofy.png';
             link.href = img;
             link.click();
-        }).catch(error => {
-            console.error('Error generating canvas:', error);
-        });
+        })
     };
 
 
@@ -80,25 +73,8 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
                 }}
             >
                 {storageValue?.icon?.includes('.png') ?
-                    (
-                        <img 
-                            src={`/png/${storageValue?.icon}`}
-                            alt="Icon"
-                            style={{ 
-                                width: storageValue?.iconSize, 
-                                height: storageValue?.iconSize 
-                            }}
-                            onError={(e) => {
-                                console.error('Image failed to load:', storageValue?.icon);
-                                setImageError(true);
-                            }}
-                            onLoad={() => {
-                                console.log('Image loaded successfully');
-                                setImageError(false);
-                            }}
-                            crossOrigin="anonymous"  // Add this for CORS handling
-                        />
-                    ) 
+                    (<img src={ '/png/' + storageValue?.icon} alt="Icon"
+                        style={{ width: storageValue?.iconSize, height: storageValue?.iconSize }}  crossOrigin="anonymous" />)
                     : (<IconFromName size={storageValue?.iconSize}
                         color={storageValue?.iconColor} />)
                 }
