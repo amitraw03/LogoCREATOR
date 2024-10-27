@@ -8,7 +8,7 @@ function BackgroundController() {
 
   const [rounded, setRounded] = useState(storageValue? storageValue?.bgRounded : 0); // maintaining prev changes
   const [padding, setPadding] = useState(storageValue? storageValue?.bgPadding : 0);
-  const [color, setColor] = useState(storageValue ? storageValue?.bgColor : '#D1D5DB');
+  const [color, setColor] = useState(storageValue ? storageValue?.bgColor : '#FFFFFF');
 
 
   const {updateStorage, setUpdateStorage} = useContext(UpdateStorageContext);

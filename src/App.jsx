@@ -9,11 +9,13 @@ import { UpdateStorageContext } from './context/UpdateStorageContext'
 const App = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [updateStorage, setUpdateStorage] = useState({});  // for setting context data
+  const [downloadLogo, setDownloadLogo] = useState();  
 
   return (
     <UpdateStorageContext.Provider value={{updateStorage,setUpdateStorage}}>
     <div className="flex flex-col h-screen">
-      <Header />
+
+      <Header DownloadLogo={setDownloadLogo} />
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar */}
         <div className="w-64 flex-shrink-0">
@@ -28,8 +30,8 @@ const App = () => {
           </div>
 
           {/* Icon Preview section */}
-          <div className="col-span-3 overflow-y-auto ">
-            <LogoPreview/>
+          <div className="col-span-3 overflow-y-auto">
+            <LogoPreview downloadLogo={downloadLogo} />
           </div>
 
           {/* Ads Banner section */}
