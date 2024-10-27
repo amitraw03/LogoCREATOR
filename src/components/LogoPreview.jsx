@@ -28,8 +28,8 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
     //method to convert html to canvas and download logo
     const downloadLogoHandler = () => {
         const downloadLink = document.getElementById('downloadLogoDiv');
-        html2canvas(downloadLink, { backgroundColor: null // Add this to handle cross-origin images
-              }).then((canvas) => {
+        html2canvas(downloadLink, { backgroundColor: null, useCORS: true,  // Add this to handle cross-origin images
+            allowTaint: true  }).then((canvas) => {
             const img = canvas.toDataURL('image/png');
             const link = document.createElement('a');
             link.download = 'raw_logofy.png';
