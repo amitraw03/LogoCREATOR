@@ -25,7 +25,7 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
         }
     }, [downloadLogo]);
 
-    //method to convert html to canvas and download logo
+    //method to convert html to png and download logo
     const downloadLogoHandler = () => {
         const downloadLink = document.getElementById('downloadLogoDiv');
         html2canvas(downloadLink, { backgroundColor: null, useCORS: true,  // Add this to handle cross-origin images
@@ -73,8 +73,8 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
                 }}
             >
                 {storageValue?.icon?.includes('.png') ?
-                    (<img src={ '/png/' + storageValue?.icon} alt="Icon"
-                        style={{ width: storageValue?.iconSize, height: storageValue?.iconSize }}  crossOrigin="anonymous" />)
+                    (<img src={  BASE_URL + '/png/' + storageValue?.icon} alt="Icon"
+                        style={{ width: storageValue?.iconSize, height: storageValue?.iconSize }}  crossOrigin="anonymous" referrerPolicy="no-referrer" />)
                     : (<IconFromName size={storageValue?.iconSize}
                         color={storageValue?.iconColor} />)
                 }
