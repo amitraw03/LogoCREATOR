@@ -4,7 +4,7 @@ import { icons } from 'lucide-react';
 import React, { useContext, useEffect, useState } from 'react'
 
 
-const BASE_URL = 'https://logoexpress.tubeguruji.com';
+// const BASE_URL = 'https://logoexpress.tubeguruji.com';
 function LogoPreview({ downloadLogo }) { // download logo request from parent component
 
     const [storageValue, setStorageValue] = useState({});
@@ -73,8 +73,13 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
                 }}
             >
                 {storageValue?.icon?.includes('.png') ?
-                    (<img src={  BASE_URL + '/png/' + storageValue?.icon} alt="Icon"
-                        style={{ width: storageValue?.iconSize, height: storageValue?.iconSize }}  crossOrigin="anonymous" referrerPolicy="no-referrer" />)
+                    ( <img
+                        src={`/png/${storageValue?.icon}`} // Proxy path here
+                        alt="Icon"
+                        style={{ width: storageValue?.iconSize, height: storageValue?.iconSize }}
+                        crossOrigin="anonymous"
+                        referrerPolicy="no-referrer"
+                    />)
                     : (<IconFromName size={storageValue?.iconSize}
                         color={storageValue?.iconColor} />)
                 }

@@ -1,0 +1,6 @@
+{
+    "rewrites": [
+      { "source": "/png/:path*", "destination": "https://logoexpress.tubeguruji.com/png/:path*" }
+    ]
+  }
+  
