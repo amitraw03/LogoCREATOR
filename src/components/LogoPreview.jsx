@@ -14,7 +14,7 @@ function LogoPreview({ downloadLogo }) { // download logo request from parent co
     // whenever storageData modfiies ,fetch the latest data from local storage
     useEffect(() => {
         const storageData = JSON.parse(localStorage.getItem('value') || '{}');
-        console.log(storageData);
+        // console.log(storageData);
         setStorageValue(storageData);
     }, [updateStorage]);
 

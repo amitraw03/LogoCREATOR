@@ -6,7 +6,7 @@ import { Download, Sparkles, RotateCcw } from 'lucide-react';
 const defaultValues = {
   iconSize: 280,
   iconRotate: 0,
-  iconColor: '#fff',
+  iconColor: '#d1d5db',
   icon: 'Star',
   bgRounded: 0,
   bgPadding: 40,

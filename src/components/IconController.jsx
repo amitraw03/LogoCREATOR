@@ -13,7 +13,7 @@ function IconController() {
 
     const [size, setSize] = useState(storageValue? storageValue?.iconSize : 280); // condn for persisting prev changes
     const [rotate, setRotate] = useState(storageValue ? storageValue?.iconRotate : 0);
-    const [color, setColor] = useState(storageValue ? storageValue?.iconColor : '#fff');
+    const [color, setColor] = useState(storageValue ? storageValue?.iconColor : '#d1d5db');
     const [icon, setIcon] = useState(storageValue ? storageValue?.icon : 'Star');
 
     // context state Variables
